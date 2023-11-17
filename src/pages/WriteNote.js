@@ -13,7 +13,7 @@ const WriteNote = ({navigation}) => {
 
   function writeNote() {
     setNoteItems([...noteItems, note]);
-
+   console.log(noteItems);
     navigation.navigate('Home', noteItems); 
   }
 
