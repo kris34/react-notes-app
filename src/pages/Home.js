@@ -10,6 +10,7 @@ const Home = props => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Notes</Text>
+      <Text>{props.route.params}</Text>
      <Text>
      </Text>
       <TouchableOpacity

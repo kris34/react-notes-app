@@ -9,9 +9,12 @@ import {
 
 const WriteNote = ({navigation}) => {
   const [note, setNote] = useState('');
+  const [noteItems, setNoteItems] = useState([]);
 
   function writeNote() {
-    navigation.navigate('Home', note);
+    setNoteItems([...noteItems, note]);
+
+    navigation.navigate('Home', noteItems); 
   }
 
   return (
@@ -23,7 +26,7 @@ const WriteNote = ({navigation}) => {
         value={note}
         onChangeText={text => setNote(text)}
       />
-      <TouchableOpacity onPress={writeNote} style={styles.button}>
+      <TouchableOpacity onPress={() => writeNote()} style={styles.button}>
         <Text style={styles.button_text}>Done</Text>
       </TouchableOpacity>
     </View>
