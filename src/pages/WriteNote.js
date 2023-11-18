@@ -4,11 +4,11 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  Button,
   TextInput,
 } from 'react-native';
-import {useDispatch} from 'react-redux';
-import {setNote} from '../store/noteReducer';
-import {addNote} from '../store/actions';
+import {useDispatch, useSelector} from 'react-redux';
+import {addNote, selectNotes} from '../store/noteSlice';
 
 const WriteNote = ({navigation}) => {
   const [note, setNote] = useState('');
@@ -19,6 +19,7 @@ const WriteNote = ({navigation}) => {
     setNote('');
     navigation.navigate('Home');
   };
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -28,7 +29,7 @@ const WriteNote = ({navigation}) => {
         value={note}
         onChangeText={text => setNote(text)}
       />
-      <TouchableOpacity onPress={() => handleSaveNote()} style={styles.button}>
+      <TouchableOpacity onPress={handleSaveNote} style={styles.button}>
         <Text style={styles.button_text}>Done</Text>
       </TouchableOpacity>
     </View>
