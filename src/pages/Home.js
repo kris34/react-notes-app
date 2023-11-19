@@ -1,18 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text} from 'react-native';
+import {useDispatch, useSelector, useStore} from 'react-redux';
+import {selectNotes} from '../store/noteSlice';
+import Note from '../components/Note';
 
 const Home = props => {
   function redirect() {
     props.navigation.navigate('WriteNote');
   }
 
+  const notes = useSelector(selectNotes);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Notes</Text>
-      <Text>{props.route.params}</Text>
-     <Text>
-     </Text>
+      <View>
+      {notes.map((note, index) => (
+        <Note key={index} note={note} />
+      ))}
+      </View>
       <TouchableOpacity
         activeOpacity={0.7}
         style={styles.addNote}
