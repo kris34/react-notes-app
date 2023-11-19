@@ -9,6 +9,9 @@ const noteSlice = createSlice({
     addNote: (state, action) => {
       state.notes.push(action.payload);
     },
+    deleteNote: (state,action) => { 
+        state.notes.filter()
+    }
   },
 });
 

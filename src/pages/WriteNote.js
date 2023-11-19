@@ -7,8 +7,8 @@ import {
   Button,
   TextInput,
 } from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {addNote, selectNotes} from '../store/noteSlice';
+import {useDispatch} from 'react-redux';
+import {addNote} from '../store/noteSlice';
 
 const WriteNote = ({navigation}) => {
   const [note, setNote] = useState('');
