@@ -16,9 +16,13 @@ const WriteNote = ({navigation}) => {
   const dispatch = useDispatch();
 
   const handleSaveNote = () => {
-    dispatch(addNote(note.trim()));
-    setNote('');
-    navigation.navigate('Home');
+    if (!note) {
+      navigation.navigate('WriteNote')
+    } else {
+      dispatch(addNote(note.trim()));
+      setNote('');
+      navigation.navigate('Home');
+    }
   };
 
   return (
