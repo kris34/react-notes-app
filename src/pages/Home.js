@@ -1,24 +1,53 @@
-import React, {useState} from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text} from 'react-native';
+import {useDispatch, useSelector, useStore} from 'react-redux';
+import {addNote, selectNotes} from '../store/noteSlice';
+import Note from '../components/Note';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Home = props => {
+  const dispatch = useDispatch();
+
   function redirect() {
     props.navigation.navigate('WriteNote');
   }
 
+  const notes = useSelector(selectNotes);
+
+ 
+  function addTenNotes() {
+    for (let i = 0; i < 100; i++) {
+      dispatch(addNote(`note ${i}`));
+    }
+  }
+
+  function renderItem(item) {
+    return <Note note={item.item} />;
+  }
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Notes</Text>
-     <Text>
-     </Text>
+      <FlatList
+        style={styles.flatlist}
+        windowSize={1}
+        data={notes.length > 0 && notes}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index}
+        maxToRenderPerBatch={50}
+        initialNumToRender={1}
+      />
       <TouchableOpacity
         activeOpacity={0.7}
         style={styles.addNote}
         onPress={redirect}>
         <Text style={styles.addNote_text}>+</Text>
       </TouchableOpacity>
-    </View>
+      <TouchableOpacity style={styles.button} onPress={addTenNotes}>
+        <Text>ADD NOTE</Text>
+      </TouchableOpacity>
+    </SafeAreaView>
   );
 };
 
@@ -48,6 +77,12 @@ const styles = StyleSheet.create({
   },
   addNote_text: {
     fontSize: 25,
+  },
+  notes_container: {
+    padding: 25,
+  },
+  flatlist: {
+    maxHeight: '60%',
   },
 });
 

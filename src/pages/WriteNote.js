@@ -1,18 +1,24 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
+  Button,
   TextInput,
 } from 'react-native';
+import {useDispatch} from 'react-redux';
+import {addNote} from '../store/noteSlice';
 
 const WriteNote = ({navigation}) => {
   const [note, setNote] = useState('');
+  const dispatch = useDispatch();
 
-  function writeNote() {
-    navigation.navigate('Home', note);
-  }
+  const handleSaveNote = () => {
+    dispatch(addNote(note));
+    setNote('');
+    navigation.navigate('Home');
+  };
 
   return (
     <View style={styles.container}>
@@ -23,9 +29,10 @@ const WriteNote = ({navigation}) => {
         value={note}
         onChangeText={text => setNote(text)}
       />
-      <TouchableOpacity onPress={writeNote} style={styles.button}>
+      <TouchableOpacity onPress={handleSaveNote} style={styles.button}>
         <Text style={styles.button_text}>Done</Text>
       </TouchableOpacity>
+      
     </View>
   );
 };
