@@ -25,6 +25,10 @@ const WriteNote = ({navigation}) => {
     }
   };
 
+  const handleBack = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <TextInput
@@ -34,9 +38,14 @@ const WriteNote = ({navigation}) => {
         value={note}
         onChangeText={text => setNote(text)}
       />
-      <TouchableOpacity onPress={handleSaveNote} style={styles.button}>
-        <Text style={styles.button_text}>Done</Text>
-      </TouchableOpacity>
+      <View style={styles.buttons_container}>
+        <TouchableOpacity onPress={handleSaveNote} style={styles.button}>
+          <Text style={styles.button_text}>Done</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleBack}>
+          <Text style={styles.button_back}>Back</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
@@ -45,10 +54,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  button: {
+  buttons_container: {
     position: 'absolute',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
     bottom: 10,
-    margin: 25,
+    alignItems: 'center',
+    width: '90%',
+    margin: 25
+  },
+  button: {
+    bottom: 10,
+  },
+  button_back: {
+    bottom: 10,
+    fontSize: 30,
+    fontWeight: 'bold',
   },
   button_text: {
     fontSize: 30,
