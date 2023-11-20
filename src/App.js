@@ -4,7 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './pages/Home';
 import WriteNote from './pages/WriteNote';
 import {Provider} from 'react-redux';
-import store from '../store';
+import store from './store/store';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +22,6 @@ function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
-      
   );
 }
 

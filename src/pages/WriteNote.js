@@ -32,6 +32,7 @@ const WriteNote = ({navigation}) => {
       <TouchableOpacity onPress={handleSaveNote} style={styles.button}>
         <Text style={styles.button_text}>Done</Text>
       </TouchableOpacity>
+      
     </View>
   );
 };
