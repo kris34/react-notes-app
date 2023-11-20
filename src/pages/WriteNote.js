@@ -15,7 +15,7 @@ const WriteNote = ({navigation}) => {
   const dispatch = useDispatch();
 
   const handleSaveNote = () => {
-    dispatch(addNote(note));
+    dispatch(addNote(note.trim()));
     setNote('');
     navigation.navigate('Home');
   };
@@ -32,7 +32,6 @@ const WriteNote = ({navigation}) => {
       <TouchableOpacity onPress={handleSaveNote} style={styles.button}>
         <Text style={styles.button_text}>Done</Text>
       </TouchableOpacity>
-      
     </View>
   );
 };

@@ -15,7 +15,6 @@ const Home = props => {
 
   const notes = useSelector(selectNotes);
 
- 
   function addTenNotes() {
     for (let i = 0; i < 100; i++) {
       dispatch(addNote(`note ${i}`));
@@ -83,6 +82,7 @@ const styles = StyleSheet.create({
   },
   flatlist: {
     maxHeight: '60%',
+    margin: 25,
   },
 });
 

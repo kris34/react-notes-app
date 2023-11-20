@@ -14,19 +14,22 @@ const Note = props => {
       <TouchableOpacity onPress={handleDelete} style={styles.delete_btn}>
         <Text>X</Text>
       </TouchableOpacity>
-      <Text>{props.note}</Text>
+      <Text style={styles.note_text}>{props.note}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  note_text: {
+    width: '90%',
+  },
   note: {
     backgroundColor: '#FFF',
     borderRadius: 10,
-    marginBottom: 10,
     padding: 10,
-    width: '100%',
+    marginBottom: 15,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   delete_btn: {
     marginRight: 10,
