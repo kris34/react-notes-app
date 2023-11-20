@@ -10,7 +10,8 @@ const noteSlice = createSlice({
       state.notes.push(action.payload);
     },
     deleteNote: (state, action) => {
-      state.notes = state.notes.filter(item => item !== action.payload);
+      const index = state.notes.indexOf(action.payload);
+      state.notes.splice(index, 1);
     },
   },
 });

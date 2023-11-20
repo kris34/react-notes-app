@@ -7,6 +7,7 @@ const Note = props => {
   const dispatch = useDispatch();
 
   function handleDelete() {
+    console.log(props.note.index);
     dispatch(deleteNote(props.note));
   }
   return (

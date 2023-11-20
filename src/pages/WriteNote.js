@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {addNote} from '../store/noteSlice';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const WriteNote = ({navigation}) => {
   const [note, setNote] = useState('');
@@ -21,7 +22,7 @@ const WriteNote = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TextInput
         multiline={true}
         style={styles.input}
@@ -32,7 +33,7 @@ const WriteNote = ({navigation}) => {
       <TouchableOpacity onPress={handleSaveNote} style={styles.button}>
         <Text style={styles.button_text}>Done</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 

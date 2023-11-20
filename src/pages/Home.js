@@ -16,7 +16,7 @@ const Home = props => {
   const notes = useSelector(selectNotes);
 
   function addTenNotes() {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 10; i++) {
       dispatch(addNote(`note ${i}`));
     }
   }
