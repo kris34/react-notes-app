@@ -20,9 +20,9 @@ const Home = props => {
       dispatch(addNote(`note ${i}`));
     }
   }
-
+   
   function renderItem(item) {
-    return <Note note={item.item} />;
+    return <Note note={item.item.text} />;
   }
 
   return (

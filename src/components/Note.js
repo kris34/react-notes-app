@@ -7,7 +7,6 @@ const Note = props => {
   const dispatch = useDispatch();
 
   function handleDelete() {
-    console.log(props.note.index);
     dispatch(deleteNote(props.note));
   }
   return (
@@ -22,6 +21,7 @@ const Note = props => {
 
 const styles = StyleSheet.create({
   note_text: {
+    fontSize: 20,
     width: '90%',
   },
   note: {
