@@ -15,15 +15,14 @@ const Home = props => {
 
   const notes = useSelector(selectNotes);
 
- 
   function addTenNotes() {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 10; i++) {
       dispatch(addNote(`note ${i}`));
     }
   }
-
+   
   function renderItem(item) {
-    return <Note note={item.item} />;
+    return <Note note={item.item.text} />;
   }
 
   return (
@@ -83,6 +82,7 @@ const styles = StyleSheet.create({
   },
   flatlist: {
     maxHeight: '60%',
+    margin: 25,
   },
 });
 
