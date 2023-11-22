@@ -15,8 +15,7 @@ const noteSlice = createSlice({
       state.notes.splice(index, 1);
     },
     editNote: (state, action) => {
-      const index = Number(action.payload.id) - 1;
-      //   console.log(action.payload.newContent);
+      const index = Number(action.payload.note.id) - 1;
       state.notes.splice(index, 1, action.payload.newContent);
     },
   },
