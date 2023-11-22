@@ -16,13 +16,18 @@ const Home = props => {
   const notes = useSelector(selectNotes);
 
   function addTenNotes() {
-    for (let i = 0; i < 10; i++) {
-      dispatch(addNote(`note ${i}`));
+    for (let i = 0; i < 20; i++) {
+      const note = dispatch(addNote(`note ${i}`));
     }
   }
 
   function renderItem(item) {
-    return <Note note={item.item.text} />;
+    return (
+      <Note
+        navigate={props.navigation.navigate}
+        note={{text: item.item.text, id: item.item.id}}
+      />
+    );
   }
 
   return (
