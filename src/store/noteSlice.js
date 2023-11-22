@@ -7,12 +7,11 @@ const noteSlice = createSlice({
   },
   reducers: {
     addNote: (state, action) => {
-      const index = state.notes.length + 1;
-      state.notes.push({text: action.payload, index});
-    
+      const id = state.notes.length + 1;
+      state.notes.push({text: action.payload, id: id});
     },
     deleteNote: (state, action) => {
-      const index = state.notes.findIndex(obj => obj.text == action.payload);
+      const index = state.notes.findIndex(obj => obj.id == action.payload.id);
       state.notes.splice(index, 1);
     },
     editNote: (state, action) => {},

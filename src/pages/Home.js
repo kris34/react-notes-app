@@ -17,12 +17,12 @@ const Home = props => {
 
   function addTenNotes() {
     for (let i = 0; i < 10; i++) {
-      dispatch(addNote(`note ${i}`));
+      const note = dispatch(addNote(`note ${i}`));
     }
   }
 
   function renderItem(item) {
-    return <Note note={item.item.text} />;
+    return <Note note={{text: item.item.text, id: item.item.id}} />;
   }
 
   return (

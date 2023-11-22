@@ -7,14 +7,16 @@ const Note = props => {
   const dispatch = useDispatch();
 
   function handleDelete() {
+    
     dispatch(deleteNote(props.note));
   }
+
   return (
     <View style={styles.note}>
       <TouchableOpacity onPress={handleDelete} style={styles.delete_btn}>
         <Text>X</Text>
       </TouchableOpacity>
-      <Text style={styles.note_text}>{props.note}</Text>
+      <Text style={styles.note_text}>{props.note.text}</Text>
     </View>
   );
 };
