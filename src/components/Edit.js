@@ -1,31 +1,26 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
-  View,
-  Text,
   StyleSheet,
-  TouchableOpacity,
-  Button,
+  Text,
   TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
-import {useDispatch} from 'react-redux';
-import {addNote} from '../store/noteSlice';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {useDispatch} from 'react-redux';
+import {editNote} from '../store/noteSlice';
 
-const WriteNote = props => {
-  const [note, setNote] = useState('');
+const Edit = props => {
+  const {note} = props.route.params;
+  const [newNote, setNote] = useState(note.text);
   const dispatch = useDispatch();
 
-  const handleSaveNote = () => {
-    if (!note) {
-      props.navigation.navigate('WriteNote');
-    } else {
-      dispatch(addNote(note.trim()));
-      setNote('');
-      props.navigation.navigate('Home');
-    }
+  const handleBack = () => {
+    props.navigation.navigate('Home');
   };
 
-  const handleBack = () => {
+  const handleEdit = () => {
+    dispatch(editNote({note: note, newContent: {text: newNote, id: note.id}}));
     props.navigation.navigate('Home');
   };
 
@@ -35,15 +30,17 @@ const WriteNote = props => {
         multiline={true}
         style={styles.input}
         placeholder={'Your note here'}
-        value={note}
+        value={newNote}
         onChangeText={text => setNote(text)}
       />
       <View style={styles.buttons_container}>
-        <TouchableOpacity onPress={handleSaveNote} style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleEdit}>
           <Text style={styles.button_text}>Done</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleBack}>
-          <Text style={styles.button_back}>Back</Text>
+        <TouchableOpacity>
+          <Text style={styles.button_back} onPress={handleBack}>
+            Back
+          </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -82,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WriteNote;
+export default Edit;

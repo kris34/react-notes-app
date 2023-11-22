@@ -14,7 +14,11 @@ const noteSlice = createSlice({
       const index = state.notes.findIndex(obj => obj.id == action.payload.id);
       state.notes.splice(index, 1);
     },
-    editNote: (state, action) => {},
+    editNote: (state, action) => {
+      const index = Number(action.payload.id) - 1;
+      //   console.log(action.payload.newContent);
+      state.notes.splice(index, 1, action.payload.newContent);
+    },
   },
 });
 

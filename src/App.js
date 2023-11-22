@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import WriteNote from './pages/WriteNote';
 import {Provider} from 'react-redux';
 import store from './store/store';
+import Edit from './components/Edit';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,10 +20,12 @@ function App() {
           initialRouteName="Home">
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="WriteNote" component={WriteNote} />
+          <Stack.Screen name="EditNote" component={Edit}/> 
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
   );
 }
+
 
 export default App;
