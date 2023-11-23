@@ -5,12 +5,18 @@ import {useDispatch, useSelector, useStore} from 'react-redux';
 import {addNote, selectNotes} from '../store/noteSlice';
 import Note from '../components/Note';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faFolder} from '@fortawesome/free-solid-svg-icons';
 
 const Home = props => {
   const dispatch = useDispatch();
 
-  function redirect() {
+  function redirectWriteNote() {
     props.navigation.navigate('WriteNote');
+  }
+
+  function redirectFolders() {
+    props.navigation.navigate('Folders');
   }
 
   const notes = useSelector(selectNotes);
@@ -42,15 +48,20 @@ const Home = props => {
         maxToRenderPerBatch={50}
         initialNumToRender={1}
       />
-      <TouchableOpacity
-        activeOpacity={0.7}
-        style={styles.addNote}
-        onPress={redirect}>
-        <Text style={styles.addNote_text}>+</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={addTenNotes}>
-        <Text>ADD NOTE</Text>
-      </TouchableOpacity>
+      <View style={styles.buttons_container}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.addNote}
+          onPress={redirectWriteNote}>
+          <Text style={styles.addNote_text}>+</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={addTenNotes}>
+          <Text>ADD NOTE</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={redirectFolders} style={styles.folders_btn}>
+          <FontAwesomeIcon icon={faFolder} size={60} color="orange" />
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
@@ -59,21 +70,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  buttons_container: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    bottom: 10,
+    alignItems: 'center',
+    margin: 25,
+    borderColor: 'black',
+   
+  },
   title: {
     fontWeight: 'bold',
     fontSize: 40,
     margin: 25,
   },
   addNote: {
-    margin: 25,
     backgroundColor: 'grey',
     width: 70,
     height: 70,
     borderRadius: 60,
     justifyContent: 'center',
-    position: 'absolute',
     alignItems: 'center',
-    bottom: 10,
     borderWidth: 1,
     shadowOffset: {width: -2, height: 4},
     shadowOpacity: 0.5,
@@ -89,6 +106,7 @@ const styles = StyleSheet.create({
     maxHeight: '60%',
     margin: 25,
   },
+  folders_btn: {},
 });
 
 export default Home;

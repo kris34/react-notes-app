@@ -1,6 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {Text} from 'vue';
+import {StyleSheet, Text, View} from 'react-native';
 
 const Folders = () => {
   return (
