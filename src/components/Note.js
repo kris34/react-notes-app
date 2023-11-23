@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     width: '90%',
   },
   note: {
+    height: 50,
     backgroundColor: '#FFF',
     borderRadius: 10,
     padding: 10,
