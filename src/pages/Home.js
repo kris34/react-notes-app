@@ -5,8 +5,7 @@ import {useDispatch, useSelector, useStore} from 'react-redux';
 import {addNote, selectNotes} from '../store/noteSlice';
 import Note from '../components/Note';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faFolder} from '@fortawesome/free-solid-svg-icons';
+
 
 const Home = props => {
   const dispatch = useDispatch();
@@ -27,7 +26,8 @@ const Home = props => {
     }
   }
 
-  function renderItem(item) {
+  function renderItem(item, index) {
+    console.log(index);
     return (
       <Note
         navigate={props.navigation.navigate}
@@ -59,7 +59,7 @@ const Home = props => {
           <Text>ADD NOTE</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={redirectFolders} style={styles.folders_btn}>
-          <FontAwesomeIcon icon={faFolder} size={60} color="orange" />
+         
         </TouchableOpacity>
       </View>
     </SafeAreaView>
