@@ -1,11 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {Text} from 'react-native';
 import {useDispatch, useSelector, useStore} from 'react-redux';
 import {addNote, selectNotes} from '../store/noteSlice';
 import Note from '../components/Note';
 import {SafeAreaView} from 'react-native-safe-area-context';
-
 
 const Home = props => {
   const dispatch = useDispatch();
@@ -26,8 +31,7 @@ const Home = props => {
     }
   }
 
-  function renderItem(item, index) {
-    console.log(index);
+  function renderItem(item) {
     return (
       <Note
         navigate={props.navigation.navigate}
@@ -59,7 +63,10 @@ const Home = props => {
           <Text>ADD NOTE</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={redirectFolders} style={styles.folders_btn}>
-         
+          <Image
+            source={require('../assets/folderIcon.png')}
+            style={styles.folder_icon}
+          />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -70,14 +77,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  folder_icon: {
+    width: 70,
+    height: 70,
+  },
   buttons_container: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-    bottom: 10,
     alignItems: 'center',
     margin: 25,
     borderColor: 'black',
-   
   },
   title: {
     fontWeight: 'bold',
