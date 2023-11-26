@@ -55,19 +55,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttons_container: {
-    position: 'absolute',
     justifyContent: 'space-between',
     flexDirection: 'row',
     bottom: 10,
     alignItems: 'center',
-    width: '90%',
     margin: 25,
+    borderColor: 'black',
   },
-  button: {
-    bottom: 10,
-  },
+  button: {},
   button_back: {
-    bottom: 10,
     fontSize: 30,
     fontWeight: 'bold',
   },
@@ -79,6 +75,7 @@ const styles = StyleSheet.create({
     color: 'black',
     margin: 25,
     fontSize: 35,
+    height: '80%',
   },
 });
 
