@@ -11,6 +11,7 @@ import {useDispatch, useSelector, useStore} from 'react-redux';
 import {addNote, selectNotes} from '../store/noteSlice';
 import Note from '../components/Note';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import folderIcon from '../assets/folderIcon.png';
 
 const Home = props => {
   const dispatch = useDispatch();
@@ -63,10 +64,7 @@ const Home = props => {
           <Text>ADD NOTE</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={redirectFolders} style={styles.folders_btn}>
-          <Image
-            source={require('../assets/folderIcon.png')}
-            style={styles.folder_icon}
-          />
+          <Image source={folderIcon} style={styles.folder_icon} />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
