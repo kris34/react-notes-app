@@ -12,6 +12,7 @@ import {addNote, selectNotes} from '../store/noteSlice';
 import Note from '../components/Note';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import folderIcon from '../assets/folderIcon.png';
+import button_add from '../assets/button_add.png';
 
 const Home = props => {
   const dispatch = useDispatch();
@@ -54,11 +55,8 @@ const Home = props => {
         initialNumToRender={1}
       />
       <View style={styles.buttons_container}>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          style={styles.addNote}
-          onPress={redirectWriteNote}>
-          <Text style={styles.addNote_text}>+</Text>
+        <TouchableOpacity activeOpacity={0.7} onPress={redirectWriteNote}>
+          <Image source={button_add} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={addTenNotes}>
           <Text>ADD NOTE</Text>

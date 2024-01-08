@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-
+import button_add from '../assets/button_add.png';
 
 const Folders = props => {
   const navigateHome = () => {
@@ -12,6 +12,9 @@ const Folders = props => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Folders</Text>
       <View style={styles.buttons_container}>
+        <TouchableOpacity>
+          <Image source={button_add} />
+        </TouchableOpacity>
         <TouchableOpacity onPress={navigateHome} style={styles.back_button}>
           <Text style={styles.back_button}>Back</Text>
         </TouchableOpacity>
@@ -34,14 +37,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   buttons_container: {
-    position: 'absolute',
-    justifyContent: 'space-between',
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    margin: 25,
-    borderColor: 'black',
-    borderWidth: 1,
-    bottom: 10,
+    paddingHorizontal: 16,
+    paddingBottom: 16,
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
   },
 });
 
