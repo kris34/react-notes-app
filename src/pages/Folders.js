@@ -8,11 +8,15 @@ const Folders = props => {
     props.navigation.navigate('Home');
   };
 
+  const navigateAddFolders = () => {
+    props.navigation.navigate('AddFolders');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Folders</Text>
       <View style={styles.buttons_container}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={navigateAddFolders}>
           <Image source={button_add} />
         </TouchableOpacity>
         <TouchableOpacity onPress={navigateHome} style={styles.back_button}>

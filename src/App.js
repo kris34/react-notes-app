@@ -7,6 +7,7 @@ import {Provider} from 'react-redux';
 import store from './store/store';
 import Edit from './pages/Edit';
 import Folders from './pages/Folders';
+import AddFolders from './pages/AddFolders';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ function App() {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="WriteNote" component={WriteNote} />
           <Stack.Screen name="EditNote" component={Edit} />
+          <Stack.Screen name="AddFolders" component={AddFolders} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
