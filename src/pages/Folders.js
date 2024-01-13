@@ -33,7 +33,12 @@ const Folders = props => {
           animationOut="slideOutDown"
           onBackdropPress={toggleModal}
           onBackButtonPress={toggleModal}>
-          <View style={{backgroundColor: 'white', padding: 16}}>
+          <View
+            style={{
+              backgroundColor: 'white',
+              height: '100%',
+              borderRadius: 10,
+            }}>
             <AddFolders />
           </View>
         </Modal>
