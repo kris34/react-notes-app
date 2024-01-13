@@ -19,7 +19,7 @@ function App() {
           screenOptions={{
             headerShown: false,
           }}
-          initialRouteName="Home">
+          initialRouteName="Home ">
           <Stack.Screen name="Folders" component={Folders} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="WriteNote" component={WriteNote} />

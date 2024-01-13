@@ -8,7 +8,7 @@ const folderSlice = createSlice({
   reducers: {
     addFolder: (state, action) => {
       const id = state.folders.length + 1;
-      state.folders.push({text: action.payload, notes: []});
+      state.folders.push({name: action.payload, id: id, notes: []});
     },
     deleteFolder: (state, action) => {
       const index = state.notes.findIndex(obj => obj.id == action.payload.id);
