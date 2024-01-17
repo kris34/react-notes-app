@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './pages/Home';
 import WriteNote from './pages/WriteNote';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import store from './store/store';
 import Edit from './pages/Edit';
 import Folders from './pages/Folders';
@@ -16,10 +16,11 @@ function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator
+          mode="modal"
           screenOptions={{
             headerShown: false,
           }}
-          initialRouteName="Home ">
+          initialRouteName="Home">
           <Stack.Screen name="Folders" component={Folders} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="WriteNote" component={WriteNote} />

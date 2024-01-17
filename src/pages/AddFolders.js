@@ -1,26 +1,41 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import Modal from 'react-native-modal';
+import React from 'react';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const AddFolders = props => {
-  const [isModalVisible, setModalVisible] = useState(false);
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
+const AddFolders = (props) => {
 
-  return (
-    <View>
-      <Text>This is the add folders page</Text>
+return (
+    <View style={styles.text}>
+      <Text style={styles.text}>New Folder</Text>
+      <View>
+        <TextInput style={styles.input} />
+      </View>
+      <View>
+        {/* Button to go back to the "Folders" page */}
+        <TouchableOpacity onPress={props.closeModal}>
+          <Text>Done</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  text: {
-    color: 'red',
-    fontSize: 50,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
+  text: {
+    textAlign: 'center',
+    fontSize: 30,
+    marginTop: 10,
+    fontWeight: 'bold'
+  },
+  input: {
+    backgroundColor: 'grey'
+  }
 });
 
 export default AddFolders;

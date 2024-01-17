@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import button_add from '../assets/button_add.png';
 import Modal from 'react-native-modal';
 import AddFolders from './AddFolders';
@@ -14,10 +14,6 @@ const Folders = props => {
 
   const navigateHome = () => {
     props.navigation.navigate('Home');
-  };
-
-  const navigateAddFolders = () => {
-    props.navigation.navigate('AddFolders');
   };
 
   return (
@@ -34,7 +30,7 @@ const Folders = props => {
           onBackdropPress={toggleModal}
           onBackButtonPress={toggleModal}>
           <View style={styles.modal}>
-            <AddFolders />
+            <AddFolders closeModal={toggleModal} />
           </View>
         </Modal>
         <TouchableOpacity onPress={navigateHome} style={styles.back_button}>
