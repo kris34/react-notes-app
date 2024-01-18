@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import delete_icon from '../assets/delete_icon.png'
 
 const AddFolders = (props) => {
   const [inputText, setInputText] = useState('')
@@ -13,11 +12,15 @@ const AddFolders = (props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>New Folder</Text>
-      <View>
+      <View style={styles.input_container}>
         <TextInput
+          onChangeText={text => setInputText(text)}
+          value={inputText}
           placeholder={'Folder name here'}
           style={styles.input} />
-          <TouchableOpacity></TouchableOpacity>
+        <TouchableOpacity onPress={clearInputText} style={styles.button_clear}>
+          <Image source={delete_icon}></Image>
+        </TouchableOpacity>
       </View>
       <View style={styles.buttons_container}>
         <TouchableOpacity onPress={props.closeModal}>
@@ -49,7 +52,7 @@ const styles = StyleSheet.create({
   },
   buttons_container: {
     flexDirection: 'row',
-    justifyContent: 'flex-end', // Align buttons to the end (right)
+    justifyContent: 'flex-end',
     alignItems: 'center',
     margin: 25,
     position: 'absolute',
@@ -58,7 +61,12 @@ const styles = StyleSheet.create({
   },
   button_done: {
     fontWeight: 'bold',
-    fontSize: 30
+    fontSize: 30,
+  },
+  button_clear: {
+    position: 'absolute',
+    marginTop: 37,
+    left: '88%'
   }
 });
 
