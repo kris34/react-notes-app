@@ -82,7 +82,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     margin: 25,
-    borderColor: 'black',
   },
   title: {
     fontWeight: 'bold',

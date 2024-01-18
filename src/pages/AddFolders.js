@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 
 const AddFolders = (props) => {
+  const [inputText, setInputText] = useState('')
 
-return (
-    <View style={styles.text}>
+  const clearInputText = () => {
+    setInputText('')
+  }
+
+  return (
+    <View style={styles.container}>
       <Text style={styles.text}>New Folder</Text>
       <View>
-        <TextInput style={styles.input} />
+        <TextInput
+          placeholder={'Folder name here'}
+          style={styles.input} />
+          <TouchableOpacity></TouchableOpacity>
       </View>
-      <View>
-        {/* Button to go back to the "Folders" page */}
+      <View style={styles.buttons_container}>
         <TouchableOpacity onPress={props.closeModal}>
-          <Text>Done</Text>
+          <Text style={styles.button_done}>Done</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -23,9 +30,7 @@ return (
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex: 1
   },
   text: {
     textAlign: 'center',
@@ -34,7 +39,26 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   input: {
-    backgroundColor: 'grey'
+    backgroundColor: 'grey',
+    margin: 10,
+    borderRadius: 10,
+    height: 40,
+    marginTop: 30,
+    fontSize: 20,
+    paddingLeft: 10
+  },
+  buttons_container: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end', // Align buttons to the end (right)
+    alignItems: 'center',
+    margin: 25,
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+  },
+  button_done: {
+    fontWeight: 'bold',
+    fontSize: 30
   }
 });
 

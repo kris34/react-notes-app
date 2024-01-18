@@ -30,7 +30,7 @@ const Folders = props => {
           onBackdropPress={toggleModal}
           onBackButtonPress={toggleModal}>
           <View style={styles.modal}>
-            <AddFolders closeModal={toggleModal} />
+            <AddFolders closeModal={toggleModal}  />
           </View>
         </Modal>
         <TouchableOpacity onPress={navigateHome} style={styles.back_button}>
