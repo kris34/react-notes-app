@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import delete_icon from '../assets/delete_icon.png'
+import { useDispatch } from 'react-redux';
+import { addFolder } from '../store/folderSlice';
 
 const AddFolders = (props) => {
+  const dispatch = useDispatch()
   const [inputText, setInputText] = useState('')
 
   const clearInputText = () => {
     setInputText('')
+  }
+
+  const createFolder = () => {
+    dispatch(addFolder(inputText));
+    props.closeModal()
   }
 
   return (
@@ -23,11 +31,12 @@ const AddFolders = (props) => {
         </TouchableOpacity>
       </View>
       <View style={styles.buttons_container}>
-        <TouchableOpacity onPress={props.closeModal}>
+        <TouchableOpacity onPress={createFolder}>
           <Text style={styles.button_done}>Done</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={props.closeModal}><Text style={styles.button_back}>Back</Text></TouchableOpacity>
       </View>
-    </View>
+    </View >
   );
 };
 
@@ -48,16 +57,18 @@ const styles = StyleSheet.create({
     height: 40,
     marginTop: 30,
     fontSize: 20,
-    paddingLeft: 10
+    paddingLeft: 10,
+    paddingRight: 35
   },
   buttons_container: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    margin: 25,
+    paddingHorizontal: 16,
+    paddingBottom: 16,
     position: 'absolute',
     bottom: 0,
-    right: 0,
+    width: '100%',
   },
   button_done: {
     fontWeight: 'bold',
@@ -67,6 +78,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     marginTop: 37,
     left: '88%'
+  },
+  button_back: {
+    fontWeight: 'bold',
+    fontSize: 30
   }
 });
 

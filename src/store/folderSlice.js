@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const folderSlice = createSlice({
   name: 'folders',
@@ -8,16 +8,18 @@ const folderSlice = createSlice({
   reducers: {
     addFolder: (state, action) => {
       const id = state.folders.length + 1;
-      state.folders.push({name: action.payload, id: id, notes: []});
+      state.folders.push({ name: action.payload, id: id, notes: [] });
     },
     deleteFolder: (state, action) => {
       const index = state.notes.findIndex(obj => obj.id == action.payload.id);
       state.notes.splice(index, 1);
     },
-    addToFolder: (state, action) => {},
+    addToFolder: (state, action) => {
+
+    },
   },
 });
 
-export const {addFolder, deleteFolder} = folderSlice.actions;
-export const selectFolders = state => state.folders.fodlers;
+export const { addFolder, deleteFolder } = folderSlice.actions;
+export const selectFolders = state => state.folders.folders;
 export default folderSlice.reducer;

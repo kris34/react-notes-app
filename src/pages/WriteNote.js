@@ -12,7 +12,6 @@ import {addNote} from '../store/noteSlice';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const WriteNote = props => {
-  console.log(props);
   const [note, setNote] = useState('');
   const dispatch = useDispatch();
 

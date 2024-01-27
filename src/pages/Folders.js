@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import button_add from '../assets/button_add.png';
 import Modal from 'react-native-modal';
 import AddFolders from './AddFolders';
+import { useSelector } from 'react-redux';
+import { selectFolders } from '../store/folderSlice';
+import Folder from '../components/Folder';
 
 const Folders = props => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const folders = useSelector(selectFolders)
 
   function toggleModal() {
     setModalVisible(!isModalVisible);
@@ -16,9 +20,22 @@ const Folders = props => {
     props.navigation.navigate('Home');
   };
 
+  function renderItem(item) {
+    return (<Folder folder={{ name: item.item.name, id: item.item.id }} />)
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Folders</Text>
+      <FlatList
+        style={styles.flatlist}
+        windowSize={1}
+        data={folders.length > 0 && folders}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index}
+        maxToRenderPerBatch={50}
+        initialNumToRender={1}
+      />
       <View style={styles.buttons_container}>
         <TouchableOpacity onPress={toggleModal}>
           <Image source={button_add} />
@@ -30,7 +47,7 @@ const Folders = props => {
           onBackdropPress={toggleModal}
           onBackButtonPress={toggleModal}>
           <View style={styles.modal}>
-            <AddFolders closeModal={toggleModal}  />
+            <AddFolders closeModal={toggleModal} />
           </View>
         </Modal>
         <TouchableOpacity onPress={navigateHome} style={styles.back_button}>
@@ -69,6 +86,9 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 10,
   },
+  flatlist: {
+
+  }
 });
 
 export default Folders;

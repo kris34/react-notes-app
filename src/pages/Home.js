@@ -44,7 +44,7 @@ const Home = props => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Notes</Text>
+      <Text style={styles.title}>Notes</Text> 
       <FlatList
         style={styles.flatlist}
         windowSize={1}
