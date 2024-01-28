@@ -1,7 +1,8 @@
 import React from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity, Image} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {deleteNote} from '../store/noteSlice';
+import delete_icon from '../assets/delete_icon.png'
 
 const Note = props => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const Note = props => {
   return (
     <View style={styles.note}>
       <TouchableOpacity onPress={handleDelete} style={styles.delete_btn}>
-        <Text>X</Text>
+       <Image source={delete_icon} />
       </TouchableOpacity>
       <TouchableOpacity onPress={navigateEdit} style={styles.note_btn}>
         <Text style={styles.note_text}>{props.note.text}</Text>
@@ -47,7 +48,6 @@ const styles = StyleSheet.create({
   },
   delete_btn: {
     marginRight: 10,
-    backgroundColor: 'red',
     width: 20,
     height: 20,
     borderRadius: 20,
