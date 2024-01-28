@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     padding: 25,
   },
   flatlist: {
-    maxHeight: '60%',
+    maxHeight: '70%',
     margin: 25,
   },
   folders_btn: {},

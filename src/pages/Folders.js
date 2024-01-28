@@ -16,17 +16,22 @@ const Folders = props => {
     setModalVisible(!isModalVisible);
   }
 
-  const navigateHome = () => {
+  function navigateHome() {
     props.navigation.navigate('Home');
   };
 
+  function navigateInsideFolder() {
+    props.navigation.navigate()
+  } 
+
   function renderItem(item) {
-    return (<Folder folder={{ name: item.item.name, id: item.item.id }} />)
+    return (<Folder navigation={navigateInsideFolder} folder={{ name: item.item.name, id: item.item.id, notesCount: item.item.notes.length }} />)
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Folders</Text>
+  
       <FlatList
         style={styles.flatlist}
         windowSize={1}
@@ -87,7 +92,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   flatlist: {
-
+    maxHeight: '70%',
+    padding: 15
   }
 });
 

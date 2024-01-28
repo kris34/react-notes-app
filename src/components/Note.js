@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   note_text: {
     fontSize: 20,
     width: '90%',
+    color: 'white'
   },
   note: {
     height: 50,
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: 'grey',
   },
   delete_btn: {
     marginRight: 10,
